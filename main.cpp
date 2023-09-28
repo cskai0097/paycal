@@ -16,12 +16,14 @@ int main()
 		float regHour = getRegHour();
 		float otHour = getOTHours();
 		float dtHour = getDTHours();
+		float holidayHour = regPay * getHoliday();
 		//calculate gross
 		float grossPay = regCalculation(regPay, otPay, dtPay, regHour, otHour, dtHour);
 		std::cout << "Your gross pay is: $" << std::fixed << std::setprecision(2) << std::round(grossPay) << "\n";
 		//calculate after tax
 		float takeHome = calcAfterTax(grossPay);
-		std::cout << "Your Take home is: " << std::fixed << std::setprecision(2) << std::round(takeHome) << "\n";
+		std::cout << "You worked a total of: "<<"'" << regHour + otHour + dtHour << "'" << " hours.\n";
+		std::cout << "Your Take home is: " << std::fixed << std::setprecision(2) << std::round(takeHome) + holidayHour << "\n";
 		std::cout << "After savings deposit: " << takeHome - 250 << "\n";
 		std::cout << "--------------------------------------------------- "<< "\n";
 		if(retryP())

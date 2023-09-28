@@ -1,13 +1,28 @@
 #include <iostream>
 #include <Windows.h>
+#include <typeinfo>
 //get user input for their regular pay rate
 float getUserPayRate()
 {
+	bool redo = false;
 	std::cout << "Enter regular rate: ";
 	float x{};
+	float y{};
 	std::cin >> x;
-
-	return x;
+	do{
+		if (typeid(x).name() == typeid(y).name())
+		{
+			return x;
+		}
+		else
+		{
+			std::cout << "Invalid input.\n";
+			std::cout << "Enter regular rate: ";
+			std::cin >> x;
+			redo = false;
+		}
+	} while (!redo);
+	
 }
 //get user input for their overtime pay rate
 float getUserOvertimePayRate()
@@ -30,10 +45,19 @@ float getUserDoubleRate()
 //get User input for how many regular hours worked
 float getRegHour()
 {
-	std::cout << "Enter regular hours worked: ";
-	float x{ 0.0 };
-	std::cin >> x;
-	return x;
+	bool redo = false;
+	do
+	{
+		std::cout << "Enter regular hours worked: ";
+		float x{ 0.0 };
+		std::cin >> x;
+		if (typeid(x) == typeid(float)) {
+			return x;
+		}
+		else
+			std::cout << "Invalid input.";
+		redo = false;
+	} while (!redo);
 }
 //get user input for how many overtime worked
 float getOTHours()
@@ -47,6 +71,13 @@ float getOTHours()
 float getDTHours()
 {
 	std::cout << "Enter DT hours worked: ";
+	float x{ 0.0 };
+	std::cin >> x;
+	return x;
+}
+float getHoliday()
+{
+	std::cout << "Enter Holiday hours obtained: ";
 	float x{ 0.0 };
 	std::cin >> x;
 	return x;
