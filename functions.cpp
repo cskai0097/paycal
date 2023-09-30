@@ -4,24 +4,11 @@
 //get user input for their regular pay rate
 float getUserPayRate()
 {
-	bool redo = false;
+	
 	std::cout << "Enter regular rate: ";
 	float x{};
-	float y{};
 	std::cin >> x;
-	do{
-		if (typeid(x).name() == typeid(y).name())
-		{
-			return x;
-		}
-		else
-		{
-			std::cout << "Invalid input.\n";
-			std::cout << "Enter regular rate: ";
-			std::cin >> x;
-			redo = false;
-		}
-	} while (!redo);
+	return x;
 	
 }
 //get user input for their overtime pay rate
